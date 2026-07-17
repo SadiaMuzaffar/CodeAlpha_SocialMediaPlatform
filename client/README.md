@@ -1,16 +1,45 @@
-# React + Vite
+# CodeAlpha_SocialMediaPlatform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack social media platform with a Node.js/Express/SQLite backend and a React (Vite) frontend.
 
-Currently, two official plugins are available:
+## Features
+- User registration and login (JWT authentication, hashed passwords)
+- Create posts
+- View feed (all posts with author info, like/comment counts)
+- Comment on posts
+- Like/unlike posts
+- Follow/unfollow users
+- View user profiles with follower/following counts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
+- **Backend:** Node.js, Express, SQLite (better-sqlite3), bcryptjs, jsonwebtoken
+- **Frontend:** React, Vite, Axios, React Router
 
-## React Compiler
+## API Endpoints
+- POST /api/auth/register - Create a new user
+- POST /api/auth/login - Login, returns JWT token
+- POST /api/posts - Create a post (requires auth)
+- GET /api/posts - Get all posts (feed)
+- POST /api/posts/:id/comments - Add a comment (requires auth)
+- GET /api/posts/:id/comments - Get comments for a post
+- POST /api/posts/:id/like - Like a post (requires auth)
+- DELETE /api/posts/:id/like - Unlike a post (requires auth)
+- GET /api/users/:id - Get user profile
+- POST /api/users/:id/follow - Follow a user (requires auth)
+- DELETE /api/users/:id/follow - Unfollow a user (requires auth)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to run
 
-## Expanding the ESLint configuration
+### Backend
+1. Clone the repo
+2. Run `npm install` in the root folder
+3. Create a `.env` file with `JWT_SECRET` and `PORT=3000`
+4. Run `node server.js`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+1. Open a new terminal, navigate to the `client` folder: `cd client`
+2. Run `npm install`
+3. Run `npm run dev`
+4. Open the URL shown (usually `http://localhost:5173`)
+
+Both the backend and frontend need to run at the same time, in separate terminals.
